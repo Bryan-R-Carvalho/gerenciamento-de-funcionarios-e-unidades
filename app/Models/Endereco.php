@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\EnderecoFuncionarioTrait;
 
-class Endereco extends Model
-{
+class Endereco extends Model{
+    
     use HasFactory;
+
     protected $fillable = [
         'cep',
         'rua',

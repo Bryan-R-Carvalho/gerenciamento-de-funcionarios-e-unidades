@@ -51,21 +51,33 @@ class FuncionarioController extends Controller
               'id_endereco' => $endereco->id,
               'id_unidade' => $request->id_unidade,
          ]);
-         
-         return response()->json([
-             'message' => 'Funcionário cadastrado com sucesso!'
-         ]);
+        
+         return redirect()->back()->with('success', 'Funcionario cadastrado com sucesso!');
     }
     public function edit($id)
     {
-        return view('funcionarios.edit');
+
+        $funcionario = Funcionario::findOrFail($id);
+        $unidades = $this->unidade->all();
+        $unidade = $this->unidade->findOrFail($funcionario->id_unidade);
+        $cep = $this->endereco->findOrFail($funcionario->id_endereco);
+        return view('funcionarios.edit', compact('funcionario', 'cep', 'unidade', 'unidades'));
     }
     public function update(Request $request, $id)
     {
+        $funcionario = $this->funcionario->findOrFail($id);
+        $funcionario->update($request->all());
+        $endereco = $this->endereco->findOrFail($funcionario->id_endereco);
+        $endereco->update($request->all());
+        
         return redirect()->route('funcionarios.index');
     }
     public function destroy($id)
     {
+        $funcionario = $this->funcionario->findOrFail($id);
+        $endereco = $this->endereco->findOrFail($funcionario->id_endereco);
+        $funcionario->delete($id);
+        $endereco->delete($endereco->id);
         return redirect()->route('funcionarios.index');
     }
 }

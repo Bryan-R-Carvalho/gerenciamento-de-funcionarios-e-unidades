@@ -5,6 +5,7 @@
     <div>
         <h1>Unidades</h1>
         <p>Unidades cadastradas:</p>
+        <a href="{{route('unidades.create')}}" class="btn btn-primary mb-3">Novo</a>
     </div>
 
         <table class="table table-striped">

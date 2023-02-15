@@ -4,14 +4,15 @@
 <div class="container my-5">
     <div>
         <h1>Funcionarios</h1>
+        <a href="{{route('funcionarios.create')}}" class="btn btn-primary mb-3">Cadastrar</a>
     </div>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">Nome</th>
-                    <th scope="col">email</th>
-                    <th scope="col">idade</th>
-                    <th scope="col">documento</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Idade</th>
+                    <th scope="col">Documento</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
@@ -32,4 +33,9 @@
                         </td>
                     </tr>
                 @endforeach
+            </tbody>
+        </table>
+    <div class="d-flex justify-content-center mt-5">
+        {{ $funcionarios->links('pagination::bootstrap-4') }}
+    </div>
 @endsection

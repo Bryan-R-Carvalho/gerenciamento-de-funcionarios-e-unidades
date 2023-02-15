@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     UnidadeController,
     FuncionarioController
-    };
+};
 
 Route::get('/', function () {
     return view('home');

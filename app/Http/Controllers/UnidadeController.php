@@ -14,7 +14,7 @@ class UnidadeController extends Controller
     }
     public function index()
     {
-        $unidades = $this->unidade->paginate(20);
+        $unidades = $this->unidade->paginate(10);
         return view('unidades.index', compact('unidades'));
     }
     public function create()

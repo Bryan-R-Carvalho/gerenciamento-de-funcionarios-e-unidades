@@ -15,7 +15,7 @@ class FuncionarioFactory extends Factory
             'email' => $this->faker->unique()->email,
             'idade' => $this->faker->numberBetween(18,90),
             'id_unidade' => $this->faker->numberBetween(1, 10),
-            'id_endereco' => $this->faker->numberBetween(1, 10),
+            'id_endereco' => $this->faker->unique()->numberBetween(1, 10),
         ];
     }
 }
